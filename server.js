@@ -3,7 +3,7 @@
 console.log('Proof of Life.');
 
 
-const { request, response } = require('express');
+
 //  ********* REQUIRES **********
 const express = require('express');
 require('dotenv').config();
@@ -28,11 +28,32 @@ const PORT = process.env.PORT || 3002;
 
 
 //  ********* ENDPOINTS *********
-//
 app.get('/', (request, response) => {
   console.log('Passed test!');
   response.status(200).send('Welcome!');
 });
+
+// front end - axios.get(http://localohost:3001/weather?searchQuery=value&lat=anothervalue&lon=anothervalue)
+app.get('/weather', (request, response, next) => {
+  let cityName = request.query.cityName;
+  let lat = request.query.lat;
+  let lon = request.query.lon;
+  try {
+    let cityData = data.find(city => city.city_name === cityName);
+    let groomedData = cityData.data.map(day => new Forecast(day));
+    response.status(200).send(cityData);
+  } catch (error) {
+  next(error);
+}
+
+
+
+class Forecast {
+  constructor(dayObj) {
+    this.date = dayObj.datetime;
+    this.description = dayObj.description
+  }
+}
 
 app.get('/hello', (request, response) => {
   let firstName = request.query.firstName;
@@ -53,16 +74,6 @@ app.get('/city', (request, response) => {
     next(error);
   }
 });
-
-class City {
-  constructor(cityObj) {
-    this.city_name = cityObj.name;
-    this.lat = cityObj.lat;
-    this.lon = cityObj.lon;
-    this.weather = cityObj.weather;
-  }
-}
-
 
 
 
