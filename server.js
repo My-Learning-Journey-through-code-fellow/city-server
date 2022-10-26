@@ -1,13 +1,13 @@
 'use stric';
 
-console.log('LIFE!');
+console.log('Proof of Life.');
 
 
 const { request, response } = require('express');
 //  ********* REQUIRES **********
 const express = require('express');
 require('dotenv').config();
-let data = require('./data/pets.json');
+let data = require('./data/weather.json');
 const cors = require('cors');
 
 
@@ -30,8 +30,8 @@ const PORT = process.env.PORT || 3002;
 //  ********* ENDPOINTS *********
 //
 app.get('/', (request, response) => {
-  console.log('Pass test!');
-  response.status(200).send('Passed the test!');
+  console.log('Passed test!');
+  response.status(200).send('Welcome!');
 });
 
 app.get('/hello', (request, response) => {
@@ -43,9 +43,10 @@ app.get('/hello', (request, response) => {
 
 app.get('/city', (request, response) => {
   try {
-    let species = request.query.species;
-    console.log(species);
-    let dataToGroom = (city => city.species === sepcies);
+    let city = request.query.data;
+
+    console.log(city);
+    let dataToGroom = data.find(city => city.data === data);
     let dataToSend = new City(dataToGroom);
     response.status(200).send(dataToSend);
   } catch (error) {
@@ -55,24 +56,26 @@ app.get('/city', (request, response) => {
 
 class City {
   constructor(cityObj) {
-    this.name = cityObj.name;
-    this.lat = cityObj.name;
+    this.city_name = cityObj.name;
+    this.lat = cityObj.lat;
+    this.lon = cityObj.lon;
+    this.weather = cityObj.weather;
   }
 }
 
 
 
 
+//  ********* ERROR HANDLING ********
+
 app.get('*', (request, response) => {
   console.log(request.query);
   response.status(404).send('This route doesnt exist');
 });
-//  ********* ERROR HANDLING ********
+
 app.use((error, request, response, next) => {
   response.status(500).send(error.message);
 });
-
-
 
 
 //  ********* SERVER START *********
