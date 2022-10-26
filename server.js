@@ -36,45 +36,34 @@ app.get('/', (request, response) => {
 // front end - axios.get(http://localohost:3001/weather?searchQuery=value&lat=anothervalue&lon=anothervalue)
 app.get('/weather', (request, response, next) => {
   let cityName = request.query.cityName;
-  let lat = request.query.lat;
-  let lon = request.query.lon;
+  let latitude = request.query.lat;
+  let longitude = request.query.lon;
   try {
     let cityData = data.find(city => city.city_name === cityName);
+    let latData = data.find(lat => lat.lat === latitude);
+    let lonData = data.find(lon => lon.lon === longitude);
     let groomedData = cityData.data.map(day => new Forecast(day));
-    response.status(200).send(cityData);
+    response.status(200).send(groomedData);
   } catch (error) {
-  next(error);
-}
-
+    next(error);
+  }
+});
 
 
 class Forecast {
+
   constructor(dayObj) {
     this.date = dayObj.datetime;
-    this.description = dayObj.description
+    this.description = dayObj.weather.description;
   }
 }
+
 
 app.get('/hello', (request, response) => {
   let firstName = request.query.firstName;
   let lastName = request.query.lastName;
   response.status(200).send(`Hello ${firstName} ${lastName}, Welcome to the site!`);
 });
-
-
-app.get('/city', (request, response) => {
-  try {
-    let city = request.query.data;
-
-    console.log(city);
-    let dataToGroom = data.find(city => city.data === data);
-    let dataToSend = new City(dataToGroom);
-    response.status(200).send(dataToSend);
-  } catch (error) {
-    next(error);
-  }
-});
-
 
 
 //  ********* ERROR HANDLING ********
