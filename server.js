@@ -8,12 +8,16 @@ const { request, response } = require('express');
 const express = require('express');
 require('dotenv').config();
 let data = require('./data/pets.json');
+const cors = require('cors');
 
 
 // once express is in we need to use it.
 //  app === sevrer
 const app = express();
 
+
+// middleware to share on the internet.
+app.use(cors());
 
 
 
@@ -37,22 +41,22 @@ app.get('/hello', (request, response) => {
 });
 
 
-app.get('/pet', (request, response) => {
+app.get('/city', (request, response) => {
   try {
     let species = request.query.species;
     console.log(species);
-    let dataToGroom = (pet => pet.species === sepcies);
-    let dataToSend = new Pet(dataToGroom);
+    let dataToGroom = (city => city.species === sepcies);
+    let dataToSend = new City(dataToGroom);
     response.status(200).send(dataToSend);
   } catch (error) {
     next(error);
   }
 });
 
-Class City {
-  constructor(cityObj){
+class City {
+  constructor(cityObj) {
     this.name = cityObj.name;
-    this.lat = cityobj.name;
+    this.lat = cityObj.name;
   }
 }
 
