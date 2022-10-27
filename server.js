@@ -9,6 +9,7 @@ const express = require('express');
 require('dotenv').config();
 let data = require('./data/weather.json');
 const cors = require('cors');
+const axios = require('axios');
 
 
 // once express is in we need to use it.
@@ -20,11 +21,9 @@ const app = express();
 app.use(cors());
 
 
-
 // define my port
 const PORT = process.env.PORT || 3002;
 // 3002 - indicates issue with .env file, or importing. Or is being.
-
 
 
 //  ********* ENDPOINTS *********
@@ -33,8 +32,9 @@ app.get('/', (request, response) => {
   response.status(200).send('Welcome!');
 });
 
+
 // front end - axios.get(http://localohost:3001/weather?searchQuery=value&lat=anothervalue&lon=anothervalue)
-app.get('/weather', (request, response, next) => {
+app.get('/weather', async (request, response, next) => {
   let cityName = request.query.cityName;
   let latitude = request.query.lat;
   let longitude = request.query.lon;
@@ -67,11 +67,11 @@ app.get('/hello', (request, response) => {
 
 
 //  ********* ERROR HANDLING ********
-
 app.get('*', (request, response) => {
   console.log(request.query);
   response.status(404).send('This route doesnt exist');
 });
+
 
 app.use((error, request, response, next) => {
   response.status(500).send(error.message);
