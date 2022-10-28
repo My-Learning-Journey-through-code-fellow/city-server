@@ -33,15 +33,16 @@ app.get('/', (request, response) => {
 });
 
 
-// front end - axios.get(http://localohost:3001/weather?searchQuery=value&lat=anothervalue&lon=anothervalue)
+// front end - axios.get(http://localhost:3001/weather?cityName=Seattle)
 app.get('/weather', async (request, response, next) => {
+  // console.log(request.data);
   let cityName = request.query.cityName;
-  let latitude = request.query.lat;
-  let longitude = request.query.lon;
+  // console.log(cityName, lati, long);
   try {
     let cityData = data.find(city => city.city_name === cityName);
-    let latData = data.find(lat => lat.lat === latitude);
-    let lonData = data.find(lon => lon.lon === longitude);
+    let lat = cityData.lat;
+    let lon = cityData.lon;
+    console.log(lat, lon);
     let groomedData = cityData.data.map(day => new Forecast(day));
     response.status(200).send(groomedData);
   } catch (error) {
@@ -59,17 +60,10 @@ class Forecast {
 }
 
 
-app.get('/hello', (request, response) => {
-  let firstName = request.query.firstName;
-  let lastName = request.query.lastName;
-  response.status(200).send(`Hello ${firstName} ${lastName}, Welcome to the site!`);
-});
-
-
 //  ********* ERROR HANDLING ********
 app.get('*', (request, response) => {
   console.log(request.query);
-  response.status(404).send('This route doesnt exist');
+  response.status(404).send('Error 404: Server Not Found');
 });
 
 
