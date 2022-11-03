@@ -29,3 +29,42 @@ Start time: ___8:45PM__
 Finish time: ___10:45PM(Did Not Finish)__
 
 Actual time needed to complete: ___N/a__
+
+Name of feature: _____________Create Server 2___________________
+
+Estimate of time needed to complete: ___2 hours__
+
+Start time: ___1:00PM__
+
+Finish time: ___1:45PM__
+
+Actual time needed to complete: ___6 hours__
+
+Name of feature: _____________added weather__________________
+
+Estimate of time needed to complete: ___5 hours__
+
+Start time: ___1:45PM__
+
+Finish time: ___10:45PM(Did Not Finish)__
+
+Actual time needed to complete: ___N/a__
+
+Name of feature: _____________added weather__2________________
+
+Estimate of time needed to complete: ___5 hours__
+
+Start time: ___2:32PM__
+
+Finish time: ___10:45PM(Did Not Finish)__
+
+Actual time needed to complete: ___16 hours ---finished 11/2__
+Name of feature: _____________adding movies __________________
+
+Estimate of time needed to complete: ___5 hours__
+
+Start time: ___5:45PM__
+
+Finish time: __________________________
+
+Actual time needed to complete: ___N/a__
