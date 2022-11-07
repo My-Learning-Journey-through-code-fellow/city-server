@@ -70,6 +70,7 @@ Finish time: ____________401 Server Error will not allow my local host to connec
 
 Actual time needed to complete: ___N/a__
 
+
 Name of feature: _____________Modularization __________________
 
 Estimate of time needed to complete: ___4 hours__
@@ -79,3 +80,13 @@ Start time: ___8:00PM__
 Finish time: _____________8:50PM_____________
 
 Actual time needed to complete: ___50 minutes__
+
+Name of feature: _____________Implementing a Cache __________________
+
+Estimate of time needed to complete: ___2 hours__
+
+Start time: ___9:30PM__
+
+Finish time: __________________________
+
+Actual time needed to complete: ________________
