@@ -59,12 +59,23 @@ Start time: ___2:32PM__
 Finish time: ___10:45PM(Did Not Finish)__
 
 Actual time needed to complete: ___16 hours ---finished 11/2__
+
 Name of feature: _____________adding movies __________________
 
 Estimate of time needed to complete: ___5 hours__
 
 Start time: ___5:45PM__
 
-Finish time: __________________________
+Finish time: ____________401 Server Error will not allow my local host to connect. moving on to modularization______________
 
 Actual time needed to complete: ___N/a__
+
+Name of feature: _____________Modularization __________________
+
+Estimate of time needed to complete: ___4 hours__
+
+Start time: ___8:00PM__
+
+Finish time: _____________8:50PM_____________
+
+Actual time needed to complete: ___50 minutes__
